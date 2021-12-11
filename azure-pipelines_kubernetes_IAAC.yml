@@ -28,4 +28,4 @@ steps:
     backendAzureRmStorageAccountName: 'storageaccparsh'
     backendAzureRmContainerName: 'storageaccparshcontainer'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
-    allowTelemetryCollection: true
+    
