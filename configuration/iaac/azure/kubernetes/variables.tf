@@ -14,6 +14,9 @@ variable node_count {
   default = 2
 }
 
+variable log_analytics_workspace_sku {
+    default = "PerGB2018"
+}
 
 
 variable dns_prefix {
