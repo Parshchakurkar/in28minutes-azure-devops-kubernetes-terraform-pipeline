@@ -14,19 +14,13 @@ provider "azurerm" {
   
 }
 
+data "azurerm_client_config" "current" {}
+
 resource "azurerm_resource_group" "resource_group" {
   name     = "${var.resource_group}_${var.environment}"
   location = var.location
 }
 
-
-resource "azurerm_log_analytics_workspace" "test" {
-    # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
-    name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
-    location            = var.log_analytics_workspace_location
-    resource_group_name = azurerm_resource_group.k8s.name
-    sku                 = var.log_analytics_workspace_sku
-}
 
 resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   name                = "${var.cluster_name}_${var.environment}"
@@ -46,6 +40,11 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
     name            = "agentpool"
     node_count      = var.node_count
     vm_size         = "Standard_DS1_v2"
+  }
+
+  network_profile {
+    load_balancer_sku = "Standard"
+    network_plugin    = "kubenet" 
   }
 
   service_principal {
