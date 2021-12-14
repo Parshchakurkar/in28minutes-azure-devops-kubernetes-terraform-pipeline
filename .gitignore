@@ -34,3 +34,6 @@ build/
 
 ### VS Code ###
 .vscode/
+configuration/iaac/azure/backend/.terraform.tfstate.lock.info
+configuration/iaac/azure/backend/.terraform.lock.hcl
+configuration/iaac/azure/backend/terraform.tfstate

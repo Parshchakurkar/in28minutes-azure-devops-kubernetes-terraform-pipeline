@@ -7,18 +7,10 @@ terraform {
   }
 }
 
+
 provider "azurerm" {
-  features {
-    
-  }
+  features {}
   
-}
-
-data "azurerm_client_config" "current" {}
-
-resource "azurerm_resource_group" "resource_group" {
-  name     = "${var.resource_group}_${var.environment}"
-  location = var.location
 }
 
 
@@ -39,7 +31,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
   default_node_pool {
     name            = "agentpool"
     node_count      = var.node_count
-    vm_size         = "Standard_DS1_v2"
+    vm_size         = "Standard_D2_v2"
   }
 
   network_profile {
@@ -54,6 +46,7 @@ resource "azurerm_kubernetes_cluster" "terraform-k8s" {
 
   tags = {
     Environment = var.environment
+    source = "Terraform"
   }
 }
 

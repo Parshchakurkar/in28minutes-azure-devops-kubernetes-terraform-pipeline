@@ -1,6 +1,6 @@
 provider "azurerm" {
-  version = "~> 1.42"
-  client_id       = var.client_id   # ENVIRONMENT VARIABLE
+  version         = "~> 1.42"
+  client_id       = var.client_id     # ENVIRONMENT VARIABLE
   client_secret   = var.client_secret # ENVIRONMENT VARIABLE
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
@@ -26,6 +26,6 @@ resource "azurerm_storage_account" "storage_account" {
 }
 
 resource "azurerm_storage_container" "storage_container" {
-  name                  = "${var.environment}terraformstatestoragecontainer"
-  storage_account_name  = azurerm_storage_account.storage_account.name
+  name                 = "${var.environment}terraformstatestoragecontainer"
+  storage_account_name = azurerm_storage_account.storage_account.name
 }

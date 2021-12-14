@@ -7,11 +7,11 @@ variable environment {
 }
 
 variable location {
-    default = "westeurope"
+    default = "West Europe"
 }
 
 variable node_count {
-  default = 2
+  default = 1
 }
 
 variable log_analytics_workspace_sku {
